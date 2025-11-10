@@ -26,6 +26,18 @@ public class InventoryManager {
         System.out.println("Item added successfully!");
     }
 
+    public void removeItem(String name) {
+        for (Item item : items) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                items.remove(item);
+                saveToFile();
+                System.out.println("Item removed successfully!");
+                return;
+            }
+        }
+        System.out.println("Item not found!");
+    }
+
     public void viewInventory() {
         if (items.isEmpty()) {
             System.out.println("Inventory is empty!");
@@ -86,5 +98,5 @@ public class InventoryManager {
             System.out.println("Error saving to file: " + e.getMessage());
         }
     }
-    
+
 }

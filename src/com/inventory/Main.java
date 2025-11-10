@@ -16,7 +16,8 @@ public class Main {
             System.out.println("1. Add Item");
             System.out.println("2. View Inventory");
             System.out.println("3. Update Quantity");
-            System.out.println("4. Exit");
+            System.out.println("4. Remove Item");
+            System.out.println("5. Exit");
             System.out.print("Choose option: ");
 
             try {
@@ -47,6 +48,12 @@ public class Main {
                         break;
 
                     case 4:
+                        System.out.print("Enter item name to remove: ");
+                        String removeName = scanner.nextLine();
+                        manager.removeItem(removeName);
+                        break;
+
+                    case 5:
                         System.out.println("Goodbye!");
                         scanner.close();
                         System.exit(0);
