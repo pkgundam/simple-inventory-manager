@@ -5,16 +5,29 @@ import com.inventory.dto.Item;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * InventoryManager class to handle inventory operations
+ */
 public class InventoryManager {
 
     private ArrayList<Item> items;
     private final String FILE_NAME = "inventory.csv";
 
+    /**
+     * Constructor to initialize inventory manager and load existing data
+     */
     public InventoryManager() {
         items = new ArrayList<>();
         loadFromFile();
     }
 
+    /**
+     * Add a new item to the inventory
+     *
+     * @param name     Item name
+     * @param quantity Item quantity
+     * @param price    Item price
+     */
     public void addItem(String name, int quantity, double price) {
         if (quantity <= 0 || price <= 0) {
             System.out.println("Error: Quantity and price must be positive!");
@@ -26,6 +39,11 @@ public class InventoryManager {
         System.out.println("Item added successfully!");
     }
 
+    /**
+     * Remove an item from the inventory by name
+     *
+     * @param name Item name to remove
+     */
     public void removeItem(String name) {
         for (Item item : items) {
             if (item.getName().equalsIgnoreCase(name)) {
@@ -38,6 +56,9 @@ public class InventoryManager {
         System.out.println("Item not found!");
     }
 
+    /**
+     * View all items in the inventory
+     */
     public void viewInventory() {
         if (items.isEmpty()) {
             System.out.println("Inventory is empty!");
@@ -52,6 +73,12 @@ public class InventoryManager {
         System.out.printf("\nTotal Inventory Value: $%.2f\n", totalValue);
     }
 
+    /**
+     * Update the quantity of an existing item
+     *
+     * @param name        Item name to update
+     * @param newQuantity New quantity value
+     */
     public void updateQuantity(String name, int newQuantity) {
         if (newQuantity <= 0) {
             System.out.println("Error: Quantity must be positive!");
@@ -68,6 +95,9 @@ public class InventoryManager {
         System.out.println("Item not found!");
     }
 
+    /**
+     * Load inventory data from file
+     */
     private void loadFromFile() {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
             String line;
@@ -88,6 +118,9 @@ public class InventoryManager {
         }
     }
 
+    /**
+     * Save inventory data to file
+     */
     private void saveToFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
             for (Item item : items) {

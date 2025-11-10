@@ -11,6 +11,11 @@ public class Main {
         InventoryManager manager = new InventoryManager();
         Scanner scanner = new Scanner(System.in);
 
+        /*
+         * All user interactions are handled in this loop
+         * menu-driven interface for inventory management
+         * add, view, update, and remove items
+         * */
         while (true) {
             System.out.println("\n=== INVENTORY MANAGEMENT SYSTEM ===");
             System.out.println("1. Add Item");
