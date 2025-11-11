@@ -1,5 +1,8 @@
 package com.inventory.dto;
 
+/**
+ * Item class representing an inventory item
+ */
 public class Item {
 
     private String name;
